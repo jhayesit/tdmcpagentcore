@@ -106,14 +106,17 @@ agents:
 ```
 
 ### 3. Configuration
-Update database connection in your chosen agent file:
-```python
-teradata_config = {
-    "env": {
-        "DATABASE_URI": "teradata://your_user:password@host:port/database"
-    }
-}
+
+**Environment Variables Setup** (Recommended for Security):
+```bash
+# Copy example environment file
+cp .env.example .env
+
+# Edit .env with your credentials
+TERADATA_DATABASE_URI=teradata://your_username:your_password@your_host:1025/your_database
 ```
+
+All agents now use environment variables for sensitive data. See [SECURITY_CONFIG.md](SECURITY_CONFIG.md) for production deployment with AWS Secrets Manager.
 
 ## 💡 High-Impact Sample Queries
 

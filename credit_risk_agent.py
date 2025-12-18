@@ -1,15 +1,21 @@
+import os
 from strands import Agent
 from strands.tools.mcp import MCPClient
 from mcp import stdio_client, StdioServerParameters
 from strands.models.bedrock import BedrockModel
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
 
-# Configuration for the Teradata server process
+# Configuration for the Teradata server process using environment variables ONLY
+# Requires TERADATA_DATABASE_URI environment variable to be set
+database_uri = os.getenv("TERADATA_DATABASE_URI")
+if not database_uri:
+    raise ValueError("TERADATA_DATABASE_URI environment variable is required but not set")
+
 teradata_config = {
     "command": "uvx",
     "args": ["teradata-mcp-server"],
     "env": {
-        "DATABASE_URI": "teradata://demo_user:genaidemo@genaidemo-vebn4sqtm35sahg2.env.clearscape.teradata.com:1025/demo_user"
+        "DATABASE_URI": database_uri
     }
 }
 

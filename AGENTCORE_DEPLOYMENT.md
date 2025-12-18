@@ -20,7 +20,44 @@ agents:
     # ... rest of your existing configuration
 ```
 
-### 3. Deploy to Amazon AgentCore
+### 3. Configure Environment Variables
+
+#### Local Development Setup
+1. **Copy the example environment file:**
+```bash
+cp .env.example .env
+```
+
+2. **Update `.env` with your credentials:**
+```bash
+# Edit .env file
+TERADATA_DATABASE_URI=teradata://your_username:your_password@your_host:1025/your_database
+```
+
+#### AgentCore Production Setup
+
+**🔒 SECURITY FIRST**: Never commit credentials to git!
+
+**Option 1: Environment Variables in AgentCore Config**
+```bash
+# Copy template and customize (DO NOT COMMIT THIS FILE)
+cp .bedrock_agentcore.template.yaml .bedrock_agentcore.local.yaml
+
+# Edit .bedrock_agentcore.local.yaml with your credentials
+# Add to .gitignore to prevent accidental commits
+```
+
+**Option 2: AWS Secrets Manager (Recommended for Production)**
+```bash
+# Store credentials securely in AWS
+aws secretsmanager create-secret \
+    --name "teradata-banking-db" \
+    --secret-string '{"uri":"teradata://user:pass@host:port/db"}'
+```
+
+**Security Best Practice**: Use AWS Secrets Manager or Systems Manager Parameter Store for production credentials. See [SECURITY_CONFIG.md](SECURITY_CONFIG.md) for complete setup.
+
+### 4. Deploy to Amazon AgentCore
 ```bash
 # Deploy using AWS CodeBuild (no local Docker needed)
 agentcore deploy
@@ -29,7 +66,7 @@ agentcore deploy
 agentcore status
 ```
 
-### 4. Test Your Agent
+### 5. Test Your Agent
 ```bash
 # Test with a sample query
 agentcore invoke --prompt "Show me customers with balance > $100,000 who have churn risk indicators"
