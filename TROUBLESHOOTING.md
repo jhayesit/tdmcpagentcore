@@ -91,7 +91,7 @@ agentcore deploy --env TERADATA_DATABASE_URI="teradata://demo_user:genaidemo@gen
 agentcore status
 
 # Test with simple query
-agentcore invoke --prompt "What databases are available?"
+agentcore invoke '{"prompt": "What databases are available?"}'
 ```
 
 ### 🚨 **Common Error Patterns**

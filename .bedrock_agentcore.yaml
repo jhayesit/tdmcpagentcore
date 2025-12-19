@@ -2,7 +2,7 @@ default_agent: agent
 agents:
   agent:
     name: agent
-    entrypoint: C:/work/tdmcpagentcore/agent.py
+    entrypoint: C:/work/tdmcpagentcore/complaint_analysis_agent.py
     deployment_type: container
     runtime_type: null
     platform: linux/arm64
@@ -30,7 +30,7 @@ agents:
     bedrock_agentcore:
       agent_id: agent-9bwALy2htI
       agent_arn: arn:aws:bedrock-agentcore:us-east-1:916169960469:runtime/agent-9bwALy2htI
-      agent_session_id: 3c7e0951-df1a-4f71-9978-e2c239f7fae9
+      agent_session_id: e6edd6eb-c71b-45c0-b418-b2d4cc6bcb0b
     codebuild:
       project_name: bedrock-agentcore-agent-builder
       execution_role: arn:aws:iam::916169960469:role/AmazonBedrockAgentCoreSDKCodeBuild-us-east-1-d4f0bc5a29

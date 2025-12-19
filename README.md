@@ -41,6 +41,13 @@ Real-time banking intelligence powered by Teradata MCP connectivity and Amazon A
 - Premium product recommendations by wealth tier
 - European cross-border wealth management insights
 
+### Complaint Analysis Agent (`complaint_analysis_agent.py`)
+**Business Impact**: $2-5M annual savings from improved complaint resolution
+- Real-time complaint pattern analysis and trend detection
+- Predictive churn prevention through complaint intelligence
+- Geographic and channel optimization for service delivery
+- Proactive issue detection before widespread customer impact
+
 ## 💰 Quantified Value Proposition
 
 | Use Case | Traditional Time | AgentCore Time | Business Impact |
@@ -92,7 +99,7 @@ pip install -r requirements.txt
 agentcore deploy
 
 # Test with high-impact query
-agentcore invoke --prompt "Show me customers with balance > $100,000 who have churn risk indicators"
+agentcore invoke '{"prompt": "Show me customers with balance > $100,000 who have churn risk indicators"}'
 ```
 
 ### 2. Alternative Agents
@@ -144,14 +151,25 @@ All agents now use environment variables for sensitive data. See [SECURITY_CONFI
 "Recommend premium banking services for affluent segments"
 ```
 
+### Complaint Analysis Agent
+```
+"Show me the top 5 complaint categories driving customer churn this quarter"
+"Analyze complaint resolution success rates by company response type"
+"Identify states with highest complaint volumes and lowest resolution rates"
+"Find customers with unresolved complaints who are at high risk of churning"
+```
+
 ## 📁 Project Structure
 
 ```
 tdmcpagentcore/
 ├── agent.py                      # 🎯 Customer Retention Agent (current entry point)
+├── customer_retention_agent.py   # 🎯 Standalone Retention Specialist
 ├── credit_risk_agent.py          # 💳 Credit Risk & Portfolio Management
 ├── wealth_management_agent.py    # 💎 High-Value Customer Optimization
+├── complaint_analysis_agent.py   # 📞 Complaint Intelligence & CX Optimization
 ├── agentcore_demo.py            # 📊 Value Proposition Demonstration
+├── complaint_analysis_demo.py    # 📞 Complaint Analysis Value Demo
 ├── AGENTCORE_DEPLOYMENT.md      # 🚀 Complete Deployment Guide
 ├── .bedrock_agentcore.yaml      # ⚙️  Amazon AgentCore Configuration
 ├── requirements.txt             # 📦 Python Dependencies

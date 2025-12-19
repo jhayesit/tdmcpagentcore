@@ -69,7 +69,7 @@ agentcore status
 ### 5. Test Your Agent
 ```bash
 # Test with a sample query
-agentcore invoke --prompt "Show me customers with balance > $100,000 who have churn risk indicators"
+agentcore invoke '{"prompt": "Show me customers with balance > $100,000 who have churn risk indicators"}'
 ```
 
 ## Available Banking Agents
@@ -175,19 +175,19 @@ lifecycle_configuration:
 ### 1. Basic Connectivity Test
 ```bash
 # Test database connection
-agentcore invoke --prompt "Show me the total number of customers in our portfolio"
+agentcore invoke '{"prompt": "Show me the total number of customers in our portfolio"}'
 ```
 
 ### 2. Business Logic Test
 ```bash
 # Test churn analysis
-agentcore invoke --prompt "Identify customers in France with high churn risk"
+agentcore invoke '{"prompt": "Identify customers in France with high churn risk"}'
 ```
 
 ### 3. Performance Test
 ```bash
 # Test response time with complex query
-agentcore invoke --prompt "Analyze customer profitability across all geographic markets"
+agentcore invoke '{"prompt": "Analyze customer profitability across all geographic markets"}'
 ```
 
 ## Monitoring & Optimization
